@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>SaludGO — Tu salud en movimiento</title>
+    <meta name="description" content="Consultas médicas online con especialistas. General $9 · Especialista $18 · Exámenes $7. Nicaragua y Centroamérica." />
+
+    <!-- ===== Iconos ===== -->
+    <link rel="icon" type="image/x-icon"               href="/images/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16"    href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32"    href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192"  href="/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="180x180"       href="/apple-touch-icon.png" />
+
+    <!-- ===== PWA ===== -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#465FFF" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- ===== Apple PWA ===== -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="SaludGO" />
+
+    <!-- Apple splash screens (iPhone) -->
+    <meta name="apple-touch-fullscreen" content="yes" />
+
+    <!-- ===== Microsoft Tiles ===== -->
+    <meta name="msapplication-TileColor" content="#0EA5C9" />
+    <meta name="msapplication-TileImage" content="/icon-144x144.png" />
+
+    <!-- ===== Open Graph / WhatsApp / Facebook ===== -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://saludgo.app/" />
+    <meta property="og:title"       content="SaludGO — Tu salud en movimiento" />
+    <meta property="og:description" content="Médicos certificados online. Consulta desde $9 USD. Nicaragua." />
+    <meta property="og:image"       content="/icon-512x512.png" />
+    <meta property="og:locale"      content="es_NI" />
+    <meta property="og:site_name"   content="SaludGO" />
+
+    <!-- ===== Twitter Card ===== -->
+    <meta name="twitter:card"        content="summary" />
+    <meta name="twitter:title"       content="SaludGO — Tu salud en movimiento" />
+    <meta name="twitter:description" content="Consultas médicas online desde $9 USD. Nicaragua." />
+    <meta name="twitter:image"       content="/icon-512x512.png" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Registro del Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('/sw.js', { scope: '/' })
+            .then((reg) => console.log('[SaludGO PWA] SW registrado:', reg.scope))
+            .catch((err) => console.warn('[SaludGO PWA] SW error:', err));
+        });
+      }
+    </script>
+  </body>
+</html>
